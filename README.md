@@ -27,16 +27,16 @@ ampp/
 │   │   ├── mydomain.com.conf
 │   │   └── mydomain.com-ssl.conf
 │   ├── logs/
-│	  │   └── <apache logs>
-│	  ├── Dockerfile
-│	  ├── php.ini
-│	  └── apache2.conf
+│   │   └── <apache logs>
+│   ├── Dockerfile
+│   ├── php.ini
+│   └── apache2.conf
 ├── mariadb/
 │   ├── data/
 │   │   └── ...
-│	  └── change-root-pass.sh
+│   └── change-root-pass.sh
 ├── phpmyadmin/
-│	  └── config.user.inc.php
+│  └── config.user.inc.php
 ├── www/
 │   ├── mydomain.com/
 │   │   └── index.html
