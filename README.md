@@ -36,7 +36,7 @@ ampp/
 │   │   └── ...
 │   └── change-root-pass.sh
 ├── phpmyadmin/
-│  └── config.user.inc.php
+│   └── config.user.inc.php
 ├── www/
 │   ├── mydomain.com/
 │   │   └── index.html
