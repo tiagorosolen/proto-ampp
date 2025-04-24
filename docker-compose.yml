@@ -52,7 +52,7 @@ services:
     restart: always
     environment:
       PMA_HOST: mariadb
-      PMA_URI: 'https://vps-6aa0f93f.vps.ovh.net/phpmyadmin/'
+      PMA_URI: 'https://localhost/phpmyadmin/'
     networks:
       - appnet
     depends_on:
