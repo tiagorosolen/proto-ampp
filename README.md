@@ -1,4 +1,4 @@
-# The Protoblog's AMPP stack - Apache, PHP, MariaDB and PhpMyAdmin
+# TheProtoBlog's AMPP stack - Apache, PHP, MariaDB and PhpMyAdmin
 
 This is my working AMPP stack. It's running out of the box with no initial configuration at all, but of course you might need to adjust it to your needs.
 Only secured requests are accepted. Initial test self-signed certs are provided but please change them before depolying to production!
@@ -12,6 +12,7 @@ Only secured requests are accepted. Initial test self-signed certs are provided 
 
 ##  Files
 
+```
 ampp/
 │
 ├── apache-php/
@@ -41,7 +42,7 @@ ampp/
 │   │   └── index.html
 │   └── index.html
 └── docker-compose.yml
-
+```
 
 ## 📦 Installation
 
