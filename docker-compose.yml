@@ -1,0 +1,66 @@
+# AMPP
+#
+# Apache, MariaDB, PHP and PhpMyAdmin
+# SSL support
+#
+# Run with 
+# docker-compose up -d
+#
+# Tiago Rosolen 2025
+
+services:
+
+  # --- Apache 2.4 --- #
+  apache-php:
+    container_name: "apache-php"
+    build: ./apache-php
+    restart: always
+    user: root
+    ports:
+      - '80:80'
+      - '443:443'
+    networks:
+      - appnet
+    volumes:
+      - ./www:/var/www
+      - ./apache-php/logs:/var/run/apache2_logs
+      - ./apache-php/apache2.conf:/etc/apache2/apache2.conf
+      - ./apache-php/hosts:/etc/apache2/sites-enabled
+      - ./apache-php/certs:/etc/ssl/certs
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      
+  # --- DataBase --- #
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.1.48
+    restart: always
+    ports:
+      - "3306:3306"
+    networks:
+      - appnet
+    environment:
+      innodb_data_home_dir: /var/lib/mysql
+      MYSQL_ROOT_PASSWORD: root             # ATTENTION change this
+      MYSQL_DATABASE: db_test
+    volumes:
+      - ./mariadb/data:/var/lib/mysql:rw
+
+  # --- Php My Admin --- #
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin    
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_URI: 'https://vps-6aa0f93f.vps.ovh.net/phpmyadmin/'
+    networks:
+      - appnet
+    depends_on:
+      - mariadb
+    volumes:
+      - ./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro
+  
+# Network for phpmyadmin reverse proxy
+networks:
+  appnet:
+    driver: bridge

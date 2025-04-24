@@ -1,0 +1,8 @@
+
+# Ignore apache-php/logs
+apache-php/logs/*
+!apache-php/logs/.placeholder
+
+# Ignore mariadb/data
+mariadb/data/*
+!mariadb/data/.placeholder
